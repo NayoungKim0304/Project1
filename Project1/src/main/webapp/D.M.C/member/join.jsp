@@ -43,7 +43,7 @@
 <!-- 본문내용 -->
 <article>
 <h1>Join Us</h1>
-<form action="" id="join">
+<form action="joinPro" id="join">
 <fieldset>
 <legend>Basic Info</legend>
 <label>User ID</label>
@@ -72,8 +72,8 @@
 </fieldset>
 <div class="clear"></div>
 <div id="buttons">
-<input type="button" value="Submit" class="submit">
-<input type="button" value="Cancel" class="cancel">
+<input type="submit" value="Submit" class="submit">
+<input type="reset" value="Cancel" class="cancel">
 </div>
 </form>
 </article>
