@@ -43,7 +43,7 @@
 <!-- 본문내용 -->
 <article>
 <h1>Join Us</h1>
-<form action="joinPro" id="join">
+<form action="joinPro.jsp" id="join">
 <fieldset>
 <legend>Basic Info</legend>
 <label>User ID</label>
