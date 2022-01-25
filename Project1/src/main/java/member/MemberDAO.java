@@ -86,4 +86,44 @@ public class MemberDAO {
 		}
 	}
 	
+	
+	// 로그인 - userCheck 메서드 정의, 리턴형 MemberDTO, 변수는 id/pass
+	public MemberDTO userCheck(String id, String pass) {
+		MemberDTO mDTO = null;
+		try {
+			//드라이버 불러오기, 데이터베이스 연결
+			con=getConnection();
+			
+			//sql구문 만들기 - id와 pass가 일치하는 회원
+			String sql = "select * from member where id=? and pass=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pass);
+			
+			//실행
+			rs=pstmt.executeQuery();
+			
+			//데이터베이스에 접근하여 일치하는 값이 있으면 MemberDTO에 값을 저장한다
+			if(rs.next()) {
+				//접근하여 일치하는 값이 있으면(true) MemberDTO 객체를 생성
+				mDTO = new MemberDTO();
+				
+				//mDTO에 데이터베이스에서 가져온 값을 저장한다
+				mDTO.setId(rs.getString("id"));
+				mDTO.setPass(rs.getString("pass"));
+				mDTO.setName(rs.getString("name"));
+				mDTO.setDate(rs.getTimestamp("date"));
+				mDTO.setAddress(rs.getString("address"));
+				mDTO.setEmail(rs.getString("email"));
+				mDTO.setPhone(rs.getString("phone"));
+				mDTO.setMobile(rs.getString("mobile"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return mDTO;
+	}
+	
 }

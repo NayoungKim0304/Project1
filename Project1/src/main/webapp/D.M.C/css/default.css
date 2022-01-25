@@ -14,6 +14,8 @@ body {
 }/*너비 : 971px 글자정렬 left 밖여백 0 
 밖오른쪽여백 auto 밖왼쪽여백 auto  최소높이 780px
 배경이미지 shadow.png 배경이미지반복 y*/
+#id{float: right; margin: 20px 40px 0 0}
+
 #login{float: right;margin: 20px 64px 0 0;
 font-family: Arial,Helvetica,sans-serif;
 font-size: 12px;word-spacing: 5px}
