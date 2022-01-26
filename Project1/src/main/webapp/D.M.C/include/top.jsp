@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <header>
 <%
+
+request.setCharacterEncoding("utf-8");
 String id=(String)session.getAttribute("id");
 
 //세션값이 비어있으면 (null이면)
@@ -14,8 +16,8 @@ if(id==null){
 	%>
 	<div id="id"><%=id %>님이 로그인 하셨습니다.<br>
 	<a href="../member/logout.jsp">logout</a>
-	<a href="info.jsp">회원정보조회</a>
-	<a href="updateForm.jsp">회원정보수정</a>
+	<a href="../member/info.jsp">회원정보조회</a>
+	<a href="../member/updateForm.jsp">회원정보수정</a>
 	
 	</div>
 	
