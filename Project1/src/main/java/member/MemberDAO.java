@@ -126,4 +126,36 @@ public class MemberDAO {
 		return mDTO;
 	}
 	
+	
+	//회원정보조회 - getMember(변수 id) 메서드 정의 리턴형 MemberDTO
+	public MemberDTO getMember(String id) {
+		MemberDTO mDTO = null;
+		try {
+			con=getConnection();
+			
+			String sql = "select * from member where id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				mDTO = new MemberDTO();
+				mDTO.setId(rs.getString("id"));
+				mDTO.setName(rs.getString("name"));
+				mDTO.setEmail(rs.getString("email"));
+				mDTO.setAddress(rs.getString("address"));
+				mDTO.setPhone(rs.getString("phone"));
+				mDTO.setMobile(rs.getString("mobile"));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return mDTO;
+	}
+	
+	
 }
