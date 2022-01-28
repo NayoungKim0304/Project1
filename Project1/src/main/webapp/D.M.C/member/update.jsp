@@ -1,3 +1,5 @@
+<%@page import="member.MemberDTO"%>
+<%@page import="member.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,35 +42,48 @@
 </ul>
 </nav>
 <!-- 왼쪽메뉴 -->
+
+
+<%
+//한글처리
+request.setCharacterEncoding("utf-8");
+
+//id 세션값 가져오기 (로그인때 생성한 세션)
+String id = (String)session.getAttribute("id");
+
+//MemberDAO 객체 생성
+MemberDAO mDAO = new MemberDAO();
+
+//getMember 메서드 호출하여 mDTO에 저장
+MemberDTO mDTO = mDAO.getMember(id);
+
+
+%>
 <!-- 본문내용 -->
 <article>
-<h1>Join Us</h1>
-<form action="joinPro.jsp" id="join" method="post">
+<h1>Update Us</h1>
+<form action="updatePro.jsp" id="join" method="post">
 <fieldset>
 <legend>Basic Info</legend>
 <label>User ID</label>
-<input type="text" name="id" class="id">
-<input type="button" value="dup. check" class="dup"><br>
+<input type="text" name="id" class="id" value="<%=id %>" readonly><br>
 <label>Password</label>
 <input type="password" name="pass"><br>
-<label>Retype Password</label>
-<input type="password" name="pass2"><br>
 <label>Name</label>
-<input type="text" name="name"><br>
+<input type="text" name="name" value="<%=mDTO.getId() %>"><br>
 <label>E-Mail</label>
-<input type="email" name="email"><br>
-<label>Retype E-Mail</label>
-<input type="email" name="email2"><br>
+<input type="email" name="email" value="<%=mDTO.getEmail()%>"><br>
+
 </fieldset>
 
 <fieldset>
 <legend>Optional</legend>
 <label>Address</label>
-<input type="text" name="address"><br>
+<input type="text" name="address" value="<%=mDTO.getAddress() %>"><br>
 <label>Phone Number</label>
-<input type="text" name="phone"><br>
+<input type="text" name="phone" value="<%=mDTO.getPhone() %>"><br>
 <label>Mobile Phone Number</label>
-<input type="text" name="mobile"><br>
+<input type="text" name="mobile" value="<%=mDTO.getMobile() %>"><br>
 </fieldset>
 <div class="clear"></div>
 <div id="buttons">

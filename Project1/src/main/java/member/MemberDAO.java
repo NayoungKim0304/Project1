@@ -158,4 +158,25 @@ public class MemberDAO {
 	}
 	
 	
+	//회원정보 수정 - updateDTO를 변수로 받는다
+	public void updateMember(MemberDTO updateDTO) {
+		try {
+			con=getConnection();
+			
+			String sql = "update member set name=?,email=?,address=?,phone=?,mobile=? where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, updateDTO.getName());
+			pstmt.setString(2, updateDTO.getEmail());
+			pstmt.setString(3, updateDTO.getAddress());
+			pstmt.setString(4, updateDTO.getPhone());
+			pstmt.setString(5, updateDTO.getMobile());
+			pstmt.setString(6, updateDTO.getId());
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+	}
 }

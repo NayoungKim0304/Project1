@@ -17,7 +17,7 @@ if(id==null){
 	<div id="id"><%=id %>님이 로그인 하셨습니다.<br>
 	<a href="../member/logout.jsp">logout</a>
 	<a href="../member/info.jsp">회원정보조회</a>
-	<a href="../member/updateForm.jsp">회원정보수정</a>
+	<a href="../member/update.jsp">회원정보수정</a>
 	
 	</div>
 	
