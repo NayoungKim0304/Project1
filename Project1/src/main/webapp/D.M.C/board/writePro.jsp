@@ -1,3 +1,5 @@
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="board.BoardDTO"%>
 <%@page import="board.BoardDAO"%>
 <%@page import="java.sql.Timestamp"%>
@@ -16,15 +18,21 @@
 //한글처리
 request.setCharacterEncoding("utf-8");
 
-//request에 저장된 요청정보 name pass subject content 가져오기
-String name = request.getParameter("name");
-String pass = request.getParameter("pass");
-String subject =  request.getParameter("subject");
-String content = request.getParameter("content");
+
+
+
+//request => multi에 저장된 요청정보 name pass subject content 가져오기
+String name=request.getParameter("name");
+String pass=request.getParameter("pass");
+String subject=request.getParameter("subject");
+String content=request.getParameter("content");
 
 //readcount=0, date 시스템의 날짜시간
 int readcount=0;
 Timestamp date=new Timestamp(System.currentTimeMillis());
+
+
+
 
 //BoardDAO 객체생성
 BoardDAO bDAO = new BoardDAO();
@@ -43,7 +51,7 @@ bDTO.setSubject(subject);
 bDTO.setContent(content);
 bDTO.setReadcount(readcount);
 bDTO.setDate(date);
-System.out.println("번호 : " + bDTO.getNum());
+
 
 //insertBoard 메서드 정의하고 호출
 bDAO.insertBoard(bDTO);

@@ -13,7 +13,7 @@ public class BoardDTO {
 	private int readcount;
 	private Timestamp date;
 	
-	
+
 	public int getNum() {
 		return num;
 	}

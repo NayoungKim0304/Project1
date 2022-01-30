@@ -98,6 +98,7 @@ public class BoardDAO {
 				pstmt.setInt(6, bDTO.getReadcount());
 				pstmt.setTimestamp(7, bDTO.getDate());
 								
+				
 				pstmt.executeUpdate();
 				
 			} catch (Exception e) {
@@ -147,5 +148,59 @@ public class BoardDAO {
 				dbClose();
 			}
 			return boardList;
+		}
+		
+		
+		//글 내용 불러오기
+		public BoardDTO getBoard(int num) {
+			BoardDTO bDTO = null;
+			try {
+				con=getConnection();
+				
+				String sql = "select * from board where num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				
+				rs=pstmt.executeQuery();
+				
+				if(rs.next()) {
+					bDTO = new BoardDTO();
+					bDTO.setNum(rs.getInt("num"));
+					bDTO.setName(rs.getString("name"));
+					bDTO.setPass(rs.getString("pass"));
+					bDTO.setSubject(rs.getString("subject"));
+					bDTO.setContent(rs.getString("content"));
+					bDTO.setReadcount(rs.getInt("readcount"));
+					bDTO.setDate(rs.getTimestamp("date"));
+					
+					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				dbClose();
+			}
+			return bDTO;
+		}
+		
+		
+		//조회수
+		public void updateReadcount(int num) {
+			try {
+				con = getConnection();
+				
+				String sql = "update board set readcount=readcount+1 where num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				
+				pstmt.executeUpdate();
+				
+				
+						
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				dbClose();
+			}
 		}
 }
