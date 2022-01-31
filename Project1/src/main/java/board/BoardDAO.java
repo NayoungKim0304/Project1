@@ -57,7 +57,7 @@ public class BoardDAO {
 		}
 		
 		
-		// 글번호 구하는 메서드
+		// 글 최대 번호 구하는 메서드
 		public int getMaxnum() {
 			int num = 0;
 			
@@ -109,6 +109,7 @@ public class BoardDAO {
 		}
 		
 		
+		//글 목록
 		public List getBoardList(int startRow, int pageSize) {
 					
 			List boardList = new ArrayList();
@@ -117,6 +118,7 @@ public class BoardDAO {
 				
 				//최근글이 제일 위에 보이게 가져오기 : num 기준으로 내림차순
 				//String sql="select * from board order by num desc limit startRow-1, pageSize";
+				//limit a,b : 시작점 a부터 b개 가져오기
 				String sql = "select * from board order by num desc limit ?,?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, startRow-1);
@@ -194,13 +196,65 @@ public class BoardDAO {
 				pstmt.setInt(1, num);
 				
 				pstmt.executeUpdate();
-				
-				
 						
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				dbClose();
+			}
+		}
+		
+		
+		//글번호, 비밀번호 체크하는 메서드
+		public BoardDTO numCheck(int num, String pass) {
+			BoardDTO bDTO=null;
+			try {
+				
+				con=getConnection();
+				
+				String sql = "select * from board where num=? and pass=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				pstmt.setString(2, pass);
+				
+				rs=pstmt.executeQuery();
+				
+				if(rs.next()) {
+					bDTO = new BoardDTO();
+					bDTO.setNum(rs.getInt("num"));
+					bDTO.setName(rs.getString("name"));
+					bDTO.setPass(rs.getString("pass"));
+					bDTO.setSubject(rs.getString("subject"));
+					bDTO.setContent(rs.getString("content"));
+					bDTO.setReadcount(rs.getInt("readcount"));
+					bDTO.setDate(rs.getTimestamp("date"));
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				dbClose();
+			}
+			
+			return bDTO;
+		}
+		
+		
+		//글 수정
+		public void updateBoard(BoardDTO updateDTO) {
+			try {
+				con=getConnection();
+				
+				String sql = "update board set subject=?, content=? where num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, updateDTO.getSubject());
+				pstmt.setString(2, updateDTO.getContent());
+				pstmt.setInt(3, updateDTO.getNum());
+				
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				// TODO: handle exception
 			}
 		}
 }

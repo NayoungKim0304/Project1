@@ -1,3 +1,5 @@
+<%@page import="board.BoardDAO"%>
+<%@page import="board.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <html>
@@ -28,14 +30,26 @@
 <!-- 헤더들어가는 곳 -->
 
 
-<form action="writePro.jsp" method="post">
+<%
+
+//글 번호를 정수형으로 변환
+int num = Integer.parseInt(request.getParameter("num"));
+
+BoardDAO bDAO = new BoardDAO();
+
+BoardDTO bDTO = bDAO.getBoard(num);
+
+
+%>
+<form action="updatePro.jsp" method="post">
+<input type="hidden" name="num" value="<%=bDTO.getNum() %>">
 <table border="1">
-<tr><td>이름</td><td><input type="text" name="name"></td></tr>
+<tr><td>이름</td><td><input type="text" name="name" value="<%=bDTO.getName()%>"></td></tr>
 <tr><td>비밀번호</td><td><input type="password" name="pass"></td></tr>
-<tr><td>제목</td><td><input type="text" name="subject"></td></tr>
-<tr><td>내용</td><td><textarea name="content"  rows="10" cols="20"></textarea></td></tr>
+<tr><td>제목</td><td><input type="text" name="subject" value="<%=bDTO.getSubject()%>"></td></tr>
+<tr><td>내용</td><td><textarea name="content" rows="10" cols="20"><%=bDTO.getContent()%></textarea></td></tr>
 <tr><td>파일첨부</td><td><input type="file" name="file"></td></tr>
-<tr><td colspan="2"><input type="submit" value="글쓰기"></td><td></td></tr>
+<tr><td colspan="2"><input type="submit" value="글수정"></td><td></td></tr>
 
 
 
