@@ -1,8 +1,8 @@
 <%@page import="board.BoardDTO"%>
-<%@page import="java.util.List"%>
 <%@page import="board.BoardDAO"%>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -30,48 +30,32 @@
 <jsp:include page="../include/top.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 -->
 
+
 <%
 
-request.setCharacterEncoding("utf-8");
+int num=Integer.parseInt(request.getParameter("num"));
 
-//BoardDAO 객체생성
 BoardDAO bDAO = new BoardDAO();
 
-//startRow : 시작 행, pageSize : 한 페이지에 들어갈 글 개수
-int startRow = 1;
-int pageSize = 10;
+BoardDTO bDTO = bDAO.getBoard(num);
 
-//getBoardList() 메서드 정의
-//List boardList = getBoardList() 메서드 호출
-List boardList = bDAO.getBoardList(startRow, pageSize);
-
-%>
-
-
-<table border="1">
-<tr><td>글번호</td><td>글쓴이</td><td>글제목</td><td>조회수</td><td>글쓴날짜</td></tr>
-
-<%
-for(int i=0; i<boardList.size(); i++){
-	//모든형 Object형 저장 => BoardDTO 형변환 => 다운캐스팅
-	BoardDTO bDTO = (BoardDTO)boardList.get(i);
+if(bDTO != null){
 	%>
-	<tr><td><%=bDTO.getNum() %></td>
-		<td><%=bDTO.getName() %></td>
-		<td><a href="content.jsp?num=<%=bDTO.getNum()%>">
-			<%=bDTO.getSubject() %></a></td>
-		<td><%=bDTO.getReadcount() %></td>
-		<td><%=bDTO.getDate() %></td></tr>
-	
+	<form action="deletePro.jsp" method="post">
+	<input type="hidden" name="num" value="<%=num%>">
+		<table border="1">
+		<tr><td>비밀번호</td><td><input type="password" name="pass"></td></tr>
+		<tr><td colspan="2"><input type="submit" value="글삭제"></td></tr>
+		</table>
+		</form>
+	</form>
 	<%
-
+	
 }
 %>
-</table>
+
 
 
 <jsp:include page="../include/bottom.jsp"></jsp:include>
-
-
 </body>
 </html>

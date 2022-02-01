@@ -257,4 +257,23 @@ public class BoardDAO {
 				// TODO: handle exception
 			}
 		}
+		
+		
+		//글 삭제
+		public void deleteBoard(int num) {
+			try {
+				con=getConnection();
+				
+				String sql = "delete from board where num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				dbClose();
+			}
+		}
 }
