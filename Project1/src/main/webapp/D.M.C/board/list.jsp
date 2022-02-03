@@ -1,8 +1,10 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="board.BoardDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="board.BoardDAO"%>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -30,6 +32,24 @@
 <jsp:include page="../include/top.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 -->
 
+<!-- 본문들어가는 곳 -->
+<!-- 메인이미지 -->
+<div id="sub_img_center"></div>
+<!-- 메인이미지 -->
+
+<!-- 왼쪽메뉴 -->
+<nav id="sub_menu">
+<ul>
+<li><a href="#">Notice</a></li>
+<li><a href="#">Public News</a></li>
+<li><a href="#">Driver Download</a></li>
+<li><a href="#">Service Policy</a></li>
+</ul>
+</nav>
+<!-- 왼쪽메뉴 -->
+
+<!-- 게시판 -->
+
 <%
 
 request.setCharacterEncoding("utf-8");
@@ -47,31 +67,50 @@ List boardList = bDAO.getBoardList(startRow, pageSize);
 
 %>
 
-
-<table border="1">
-<tr><td>글번호</td><td>글쓴이</td><td>글제목</td><td>조회수</td><td>글쓴날짜</td></tr>
-
+<article>
+<h1>Notice</h1>
+<table id="notice">
+<tr><th class="tno">No.</th>
+    <th class="ttitle">Title</th>
+    <th class="twrite">Writer</th>
+    <th class="tdate">Date</th>
+    <th class="tread">Read</th></tr>
 <%
 for(int i=0; i<boardList.size(); i++){
 	//모든형 Object형 저장 => BoardDTO 형변환 => 다운캐스팅
 	BoardDTO bDTO = (BoardDTO)boardList.get(i);
 	%>
 	<tr><td><%=bDTO.getNum() %></td>
-		<td><%=bDTO.getName() %></td>
 		<td><a href="content.jsp?num=<%=bDTO.getNum()%>">
 			<%=bDTO.getSubject() %></a></td>
-		<td><%=bDTO.getReadcount() %></td>
-		<td><%=bDTO.getDate() %></td></tr>
+		<td><%=bDTO.getName() %></td>
+		<td><%=bDTO.getDate() %></td>
+		<td><%=bDTO.getReadcount() %></td></tr>
+
 	
 	<%
 
 }
 %>
 </table>
+<div id="table_search">
+<input type="text" name="search" class="input_box">
+<input type="button" value="search" class="btn">
+</div>
+<div class="clear"></div>
+<div id="page_control">
 
 
+
+
+</div>
+</article>
+<!-- 게시판 -->
+<!-- 본문들어가는 곳 -->
+<div class="clear"></div>
+<!-- 푸터들어가는 곳 -->
 <jsp:include page="../include/bottom.jsp"></jsp:include>
-
-
+<!-- 푸터들어가는 곳 -->
+</div>
 </body>
 </html>

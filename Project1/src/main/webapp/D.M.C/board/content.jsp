@@ -6,6 +6,7 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -33,6 +34,23 @@
 <jsp:include page="../include/top.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 -->
 
+<!-- 본문들어가는 곳 -->
+<!-- 메인이미지 -->
+<div id="sub_img_center"></div>
+<!-- 메인이미지 -->
+
+<!-- 왼쪽메뉴 -->
+<nav id="sub_menu">
+<ul>
+<li><a href="#">Notice</a></li>
+<li><a href="#">Public News</a></li>
+<li><a href="#">Driver Download</a></li>
+<li><a href="#">Service Policy</a></li>
+</ul>
+</nav>
+<!-- 왼쪽메뉴 -->
+
+<!-- 게시판 -->
 
 <%
 
@@ -57,15 +75,14 @@ BoardDTO bDTO = bDAO.getBoard(num);
 //5단계 다음행으로 이동 -> 열접근 -> 출력
 
 	%>
-<table border="1">
+<article>
+<h1>Notice Content</h1>
+<table id="notice">
 <tr><td>글번호</td><td><%=bDTO.getNum() %></td>
 	<td>글쓴날짜</td><td><%=bDTO.getDate() %></td></tr>
 <tr><td>글쓴이</td><td><%=bDTO.getName() %></td>
 	<td>조회수</td><td><%=bDTO.getReadcount() %></td></tr>
 <tr><td>글제목</td><td colspan="3"><%=bDTO.getSubject() %></td></tr>
-
-
-</td></tr>
 <tr><td>글내용</td><td colspan="3"><%=bDTO.getContent() %></td></tr>
 <tr><td colspan="4">
 <input type="button" value="글수정" onclick="location.href='updateForm.jsp?num=<%=bDTO.getNum()%>'">
@@ -75,6 +92,19 @@ BoardDTO bDTO = bDAO.getBoard(num);
 </tr>
 
 </table>	
+<div id="table_search">
+</div>
+
+<div class="clear"></div>
+<div id="page_control">
+
+
+
+</div>
+</article>
+<!-- 게시판 -->
+<!-- 본문들어가는 곳 -->
+<div class="clear"></div>
 
 <jsp:include page="../include/bottom.jsp"></jsp:include>
 

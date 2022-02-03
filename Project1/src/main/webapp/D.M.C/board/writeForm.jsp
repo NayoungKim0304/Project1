@@ -28,7 +28,7 @@
 <!-- 헤더들어가는 곳 -->
 
 
-<form action="writePro.jsp" method="post">
+<form action="writePro.jsp" method="post" enctype="multipart/form-data">
 <table border="1">
 <tr><td>이름</td><td><input type="text" name="name"></td></tr>
 <tr><td>비밀번호</td><td><input type="password" name="pass"></td></tr>
