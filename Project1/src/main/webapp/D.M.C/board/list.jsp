@@ -93,7 +93,9 @@ for(int i=0; i<boardList.size(); i++){
 }
 %>
 </table>
+
 <div id="table_search">
+<input type="button" value="글쓰기" onclick="location.href='writeForm.jsp'" class="btn" style="float: right;"><br><br>
 <input type="text" name="search" class="input_box">
 <input type="button" value="search" class="btn">
 </div>
