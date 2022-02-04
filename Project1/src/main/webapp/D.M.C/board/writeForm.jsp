@@ -46,7 +46,7 @@
 <!-- 게시판 -->
 
 <article>
-<form action="writePro.jsp" method="post" enctype="multipart/form-data">
+<form action="writePro.jsp" method="post">
 <table id="notice">
 <tr><td>이름</td><td><input type="text" name="name" style="float: left;"></td></tr>
 <tr><td>비밀번호</td><td><input type="password" name="pass" style="float: left;"></td></tr>

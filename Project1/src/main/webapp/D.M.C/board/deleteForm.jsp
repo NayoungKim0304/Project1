@@ -30,6 +30,23 @@
 <jsp:include page="../include/top.jsp"></jsp:include>
 <!-- 헤더들어가는 곳 -->
 
+<!-- 본문들어가는 곳 -->
+<!-- 메인이미지 -->
+<div id="sub_img_center"></div>
+<!-- 메인이미지 -->
+
+<!-- 왼쪽메뉴 -->
+<nav id="sub_menu">
+<ul>
+<li><a href="#">Notice</a></li>
+<li><a href="#">Public News</a></li>
+<li><a href="#">Driver Download</a></li>
+<li><a href="#">Service Policy</a></li>
+</ul>
+</nav>
+<!-- 왼쪽메뉴 -->
+
+<!-- 게시판 -->
 
 <%
 
@@ -41,20 +58,22 @@ BoardDTO bDTO = bDAO.getBoard(num);
 
 if(bDTO != null){
 	%>
+	<article>
 	<form action="deletePro.jsp" method="post">
 	<input type="hidden" name="num" value="<%=num%>">
-		<table border="1">
-		<tr><td>비밀번호</td><td><input type="password" name="pass"></td></tr>
+		<table id="notice">
+		<tr><td>비밀번호</td><td><input type="password" name="pass" style="float: left;"></td></tr>
 		<tr><td colspan="2"><input type="submit" value="글삭제"></td></tr>
 		</table>
 		</form>
 	</form>
+	</article>
 	<%
 	
 }
 %>
 
-
+<div class="clear"></div>
 
 <jsp:include page="../include/bottom.jsp"></jsp:include>
 </body>
