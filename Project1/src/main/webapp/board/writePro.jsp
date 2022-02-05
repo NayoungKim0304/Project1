@@ -15,17 +15,33 @@
 
 <%
 
+//request 한글처리
+//request.setCharacterEncoding("utf-8");
+//파로 업로드 cos.jar 프로그램 설치
+//http://www.servlets.com
+//COS File Upload Library
+//cos-20.08.zip
+//WEB-INF - lib - cos.jar
+//MultipartRequest 객체생성
+//MultipartRequest multi=
+//new MultipartRequest(request,파일물리적경로,파일크기,한글처리,중복이름변경);
+//upload폴더 만들고 => 물리적인 경로 알아오기
+String uploadPath=request.getRealPath("/upload");
+int maxSize=10*1024*1024; //10M
+
+MultipartRequest multi=
+new MultipartRequest(request,uploadPath,maxSize,"utf-8",new DefaultFileRenamePolicy());
+
 //한글처리
 request.setCharacterEncoding("utf-8");
 
 
-
-
 //request => multi에 저장된 요청정보 name pass subject content 가져오기
-String name=request.getParameter("name");
-String pass=request.getParameter("pass");
-String subject=request.getParameter("subject");
-String content=request.getParameter("content");
+String name=multi.getParameter("name");
+String pass=multi.getParameter("pass");
+String subject=multi.getParameter("subject");
+String content=multi.getParameter("content");
+String file=multi.getFilesystemName("file");
 
 //readcount=0, date 시스템의 날짜시간
 int readcount=0;
@@ -51,7 +67,7 @@ bDTO.setSubject(subject);
 bDTO.setContent(content);
 bDTO.setReadcount(readcount);
 bDTO.setDate(date);
-
+bDTO.setFile(file);
 
 //insertBoard 메서드 정의하고 호출
 bDAO.insertBoard(bDTO);

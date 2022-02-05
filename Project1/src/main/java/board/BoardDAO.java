@@ -88,7 +88,7 @@ public class BoardDAO {
 			try {
 				con=getConnection();
 				
-				String sql="insert into board(num, name, pass, subject, content, readcount, date) values(?,?,?,?,?,?,?)";
+				String sql="insert into board(num, name, pass, subject, content, readcount, date, file) values(?,?,?,?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, bDTO.getNum());
 				pstmt.setString(2, bDTO.getName());
@@ -97,7 +97,7 @@ public class BoardDAO {
 				pstmt.setString(5, bDTO.getContent());
 				pstmt.setInt(6, bDTO.getReadcount());
 				pstmt.setTimestamp(7, bDTO.getDate());
-								
+				pstmt.setString(8, bDTO.getFile());
 				
 				pstmt.executeUpdate();
 				
@@ -174,6 +174,7 @@ public class BoardDAO {
 					bDTO.setContent(rs.getString("content"));
 					bDTO.setReadcount(rs.getInt("readcount"));
 					bDTO.setDate(rs.getTimestamp("date"));
+					bDTO.setFile(rs.getString("file"));
 					
 					
 				}

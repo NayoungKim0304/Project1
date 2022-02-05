@@ -46,13 +46,14 @@
 <!-- 게시판 -->
 
 <article>
-<form action="writePro.jsp" method="post">
+<form action="writePro.jsp" method="post" enctype="multipart/form-data">
 <table id="notice">
 <tr><td>이름</td><td><input type="text" name="name" style="float: left;"></td></tr>
 <tr><td>비밀번호</td><td><input type="password" name="pass" style="float: left;"></td></tr>
 <tr><td>제목</td><td><input type="text" name="subject" style="float: left;"></td></tr>
 <tr><td>내용</td><td><textarea name="content"  rows="10" cols="50" style="float: left;"></textarea></td></tr>
-<tr><td colspan="2"><input type="submit" value="등록"></td><td></td></tr>
+<tr><td>파일첨부</td><td><input type="file" name="file" style="float: left;"></td></tr>
+<tr><td colspan="2"><input type="submit" value="등록" class="btn"></td><td></td></tr>
 
 
 </table>
