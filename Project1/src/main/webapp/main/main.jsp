@@ -1,6 +1,11 @@
+<%@page import="board.BoardDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="board.BoardDAO"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -37,27 +42,7 @@
  width="971" height="282"></div>
 <!-- 메인이미지 들어가는곳 -->
 <!-- 메인 콘텐츠 들어가는 곳 -->
-<article id="front">
-<div id="solution">
-<div id="hosting">
-<h3>Web Hosting Solution</h3>
-<p>Lorem impsun Lorem impsunLorem impsunLorem
- impsunLorem impsunLorem impsunLorem impsunLorem
-  impsunLorem impsunLorem impsun....</p>
-</div>
-<div id="security">
-<h3>Web Security Solution</h3>
-<p>Lorem impsun Lorem impsunLorem impsunLorem
- impsunLorem impsunLorem impsunLorem impsunLorem
-  impsunLorem impsunLorem impsun....</p>
-</div>
-<div id="payment">
-<h3>Web Payment Solution</h3>
-<p>Lorem impsun Lorem impsunLorem impsunLorem
- impsunLorem impsunLorem impsunLorem impsunLorem
-  impsunLorem impsunLorem impsun....</p>
-</div>
-</div>
+
 <div class="clear"></div>
 <div id="sec_news">
 <h3><span class="orange">Security</span> News</h3>
@@ -77,16 +62,33 @@ quis ante......</dd>
 <div id="news_notice">
 <h3 class="brown">News &amp; Notice</h3>
 <table>
-<tr><td class="contxt"><a href="#">Vivans....</a></td>
-    <td>2012.11.02</td></tr>
-<tr><td class="contxt"><a href="#">Vivans....</a></td>
-    <td>2012.11.02</td></tr>
-<tr><td class="contxt"><a href="#">Vivans....</a></td>
-    <td>2012.11.02</td></tr>
-<tr><td class="contxt"><a href="#">Vivans....</a></td>
-    <td>2012.11.02</td></tr>
-<tr><td class="contxt"><a href="#">Vivans....</a></td>
-    <td>2012.11.02</td></tr>
+
+<%
+
+//최근글 다섯개 출력
+int pageSize=5;
+int startRow=1;
+
+//BoardDAO 객체생성
+BoardDAO bDAO = new BoardDAO();
+
+//List<BoardDTO> boardList = getBoardList(startRow, pageSize) 메서드 호출
+List<BoardDTO> boardList = bDAO.getBoardList(startRow, pageSize);
+
+//날짜->String문자열 모양으로 변경
+SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+for(int i=0; i<boardList.size(); i++){
+	BoardDTO bDTO = boardList.get(i);
+	%>
+	
+	<tr><td class="contxt"><a href="../center/content.jsp?num=<%=bDTO.getNum() %>"><%=bDTO.getSubject() %></a></td>
+    <td><%=dateFormat.format(bDTO.getDate()) %></td></tr>
+    
+	<%
+}
+
+%>
+
 </table>
 </div>
 </article>

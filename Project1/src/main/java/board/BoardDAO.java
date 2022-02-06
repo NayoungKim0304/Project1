@@ -277,4 +277,28 @@ public class BoardDAO {
 				dbClose();
 			}
 		}
+		
+		
+		//전체 글 개수 구하기
+		public int getBoardCount() {
+			int count=0;
+			try {
+				con=getConnection();
+				
+				String sql = "select count(*) from board";
+				pstmt=con.prepareStatement(sql);
+				
+				rs=pstmt.executeQuery();
+				
+				//rs 다음행으로 접근하여 있으면 count변수에 저장
+				if(rs.next()) {
+					count=rs.getInt("count(*)");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				dbClose();
+			}
+			return count;
+		}
 }

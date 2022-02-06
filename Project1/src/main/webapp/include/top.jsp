@@ -5,15 +5,12 @@
 <link href="../css/default.css" rel="stylesheet" type="text/css">
 <link href="../css/subpage.css" rel="stylesheet" type="text/css">
 <%
-
 request.setCharacterEncoding("utf-8");
 String id=(String)session.getAttribute("id");
-
 //세션값이 비어있으면 (null이면)
 if(id==null){
 	%>
 	<div id="login"><a href="../member/login.jsp">login</a> | <a href="../member/join.jsp">join</a></div>
-	<div class="clear"></div>
 	<%
 } else{
 	%>
@@ -29,7 +26,7 @@ if(id==null){
 %>
 
 
-
+<div class="clear"></div>
 <!-- 로고들어가는 곳 -->
 <div id="logo"><img src="../images/logo.gif" width="265" height="62" alt="Fun Web"></div>
 <!-- 로고들어가는 곳 -->
