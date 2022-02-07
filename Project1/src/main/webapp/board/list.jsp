@@ -179,7 +179,19 @@ if(endPage < pageCount){
 
 
 <div id="table_search">
-<input type="button" value="글쓰기" onclick="location.href='writeForm.jsp'" class="btn" style="float: right;"><br><br>
+<%
+
+//세션값 가져오기
+String id = (String)session.getAttribute("id");
+
+//세션값이 있으면 글쓰기 버튼 보이기
+if(id != null){
+	%>
+	<input type="button" value="글쓰기" onclick="location.href='writeForm.jsp'" class="btn" style="float: right;">
+	<%
+}
+%>
+
 <input type="text" name="search" class="input_box">
 <input type="button" value="search" class="btn">
 </div>
