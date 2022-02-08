@@ -40,10 +40,9 @@
 <!-- 왼쪽메뉴 -->
 <nav id="sub_menu">
 <ul>
-<li><a href="#">Notice</a></li>
-<li><a href="#">Public News</a></li>
-<li><a href="#">Driver Download</a></li>
-<li><a href="#">Service Policy</a></li>
+<li><a href="notice.jsp">공지</a></li>
+<li><a href="main.jsp">News</a></li>
+<li><a href="list.jsp">자유게시판</a></li>
 </ul>
 </nav>
 <!-- 왼쪽메뉴 -->
@@ -92,6 +91,9 @@ List boardList = bDAO.getBoardList(startRow, pageSize);
 
 //boardList 배열 한칸 접근 get(0) => BoardDTO 주소 => num, pass, name,...접근 출력
 
+//날짜=>모양변경=>String문자열로 변경시켜주는 
+SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+
 %>
 
 <article>
@@ -108,10 +110,10 @@ for(int i=0; i<boardList.size(); i++){
 	BoardDTO bDTO = (BoardDTO)boardList.get(i);
 	%>
 	<tr><td><%=bDTO.getNum() %></td>
-		<td><a href="content.jsp?num=<%=bDTO.getNum()%>">
+		<td class="left"><a href="content.jsp?num=<%=bDTO.getNum()%>">
 			<%=bDTO.getSubject() %></a></td>
 		<td><%=bDTO.getName() %></td>
-		<td><%=bDTO.getDate() %></td>
+		<td><%=dateFormat.format(bDTO.getDate()) %></td>
 		<td><%=bDTO.getReadcount() %></td></tr>
 
 	

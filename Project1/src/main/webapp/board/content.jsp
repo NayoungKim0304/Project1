@@ -82,18 +82,34 @@ BoardDTO bDTO = bDAO.getBoard(num);
 	<td>글쓴날짜</td><td><%=bDTO.getDate() %></td></tr>
 <tr><td>글쓴이</td><td><%=bDTO.getName() %></td>
 	<td>조회수</td><td><%=bDTO.getReadcount() %></td></tr>
-<tr><td>글제목</td><td colspan="3"><%=bDTO.getSubject() %></td></tr>
-<tr><td>글내용</td><td colspan="3"><%=bDTO.getContent() %></td></tr>
-<tr><td>첨부파일</td><td colspan="3"><a href="../upload/<%= bDTO.getFile()%>" download><%=bDTO.getFile() %></a>
+<tr><td>글제목</td><td class="left"><%=bDTO.getSubject() %></td></tr>
+<tr><td>글내용</td><td class="left"><%=bDTO.getContent() %></td></tr>
+<tr><td>첨부파일</td><td class="left"><a href="../upload/<%= bDTO.getFile()%>" download><%=bDTO.getFile() %></a>
 				  <img src="../upload/<%= bDTO.getFile()%>" width="100" height="100"></td></tr>
-<tr><td colspan="4">
-<input type="button" value="글수정" onclick="location.href='updateForm.jsp?num=<%=bDTO.getNum()%>'">
-<input type="button" value="글삭제" onclick="location.href='deleteForm.jsp?num=<%=bDTO.getNum()%>'">
-<input type="button" value="글목록" onclick="location.href='list.jsp'"></td>
+</table>
+<div id="table_search">
 
-</tr>
+<%
+//세션값 가져오기
+String id = (String)session.getAttribute("id");
 
-</table>	
+//세션값이 있으면(세션값과 글쓴이가 일치하면)
+if(id != null){
+	if(id.equals(bDTO.getName())){
+		%>
+		<input type="button" value="글수정" class="btn" onclick="location.href='update.jsp?num=<%=bDTO.getNum() %>'">
+		<input type="button" value="글삭제" class="btn" onclick="location.href='delete.jsp?num=<%=bDTO.getNum() %>'">
+		<%
+		
+	}
+}
+
+%>
+
+<input type="button" value="글목록" class="btn" onclick="location.href='list.jsp'">
+</div>
+
+	
 <div id="table_search">
 </div>
 
