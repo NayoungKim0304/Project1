@@ -39,65 +39,21 @@
 <nav id="sub_menu">
 <ul>
 <li><a href="#">Welcome</a></li>
-<li><a href="#">History</a></li>
-<li><a href="#">Newsroom</a></li>
-<li><a href="#">Public Policy</a></li>
 </ul>
 </nav>
 <!-- 왼쪽메뉴 -->
 <!-- 내용 -->
 <article>
 <h1>Welcome</h1>
-<figure class="ceo"><img src="../images/company/CEO.jpg" width="196" height="226" 
-alt="CEO"><figcaption>Fun Web CEO Michael</figcaption>
-</figure>
-<p>Lorem ipsum ipsum dolor...
-tellus Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus
-Lorem ipsum ipsum dolor...tellus</p>
+
+<p>
+<br>
+<br>
+드라마와 영화에 대한 이야기를 나눌 수 있는 공간입니다.
+
+
+
+</p>
 </article>
 <!-- 내용 -->
 <!-- 본문 들어가는 곳 -->

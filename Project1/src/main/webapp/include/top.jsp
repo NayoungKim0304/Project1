@@ -28,14 +28,13 @@ if(id==null){
 
 <div class="clear"></div>
 <!-- 로고들어가는 곳 -->
-<div id="logo"><img src="../images/logo.gif" width="265" height="62" alt="Fun Web"></div>
+<div id="logo"><a href="../main/main.jsp"><img src="../images/logo.gif" width="265" height="62" alt="Fun Web"></a></div>
 <!-- 로고들어가는 곳 -->
 <nav id="top_menu">
 <ul>
 	<li><a href="../main/main.jsp">HOME</a></li>
 	<li><a href="../company/welcome.jsp">COMPANY</a></li>
-	<li><a href="../board/list.jsp">Community</a></li>
-	<li><a href="#">CONTACT US</a></li>
+	<li><a href="../nboard/list.jsp">Community</a></li>
 </ul>
 </nav>
 </header>

@@ -1,3 +1,4 @@
+<%@page import="board.nBoardDAO"%>
 <%@page import="board.BoardDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="board.BoardDAO"%>
@@ -45,22 +46,7 @@
 
 <div class="clear"></div>
 <div id="sec_news">
-<h3><span class="orange">Security</span> News</h3>
-<dl>
-<dt>Vivamus id ligula....</dt>
-<dd>Proin quis ante Proin quis anteProin 
-quis anteProin quis anteProin quis anteProin 
-quis ante......</dd>
-</dl>
-<dl>
-<dt>Vivamus id ligula....</dt>
-<dd>Proin quis ante Proin quis anteProin 
-quis anteProin quis anteProin quis anteProin 
-quis ante......</dd>
-</dl>
-</div>
-<div id="news_notice">
-<h3 class="brown">자유게시판</h3>
+<h3><span class="orange">News</span></h3>
 <table>
 
 <%
@@ -70,7 +56,7 @@ int pageSize=5;
 int startRow=1;
 
 //BoardDAO 객체생성
-BoardDAO bDAO = new BoardDAO();
+nBoardDAO bDAO = new nBoardDAO();
 
 //List<BoardDTO> boardList = getBoardList(startRow, pageSize) 메서드 호출
 List<BoardDTO> boardList = bDAO.getBoardList(startRow, pageSize);
@@ -81,8 +67,41 @@ for(int i=0; i<boardList.size(); i++){
 	BoardDTO bDTO = boardList.get(i);
 	%>
 	
-	<tr><td class="contxt"><a href="../center/content.jsp?num=<%=bDTO.getNum() %>"><%=bDTO.getSubject() %></a></td>
+	<tr><td class="contxt"><a href="../nboard/content.jsp?num=<%=bDTO.getNum() %>"><%=bDTO.getSubject() %></a></td>
     <td><%=dateFormat.format(bDTO.getDate()) %></td></tr>
+    
+	<%
+}
+
+%>
+
+</table>
+
+</div>
+
+
+
+<div id="news_notice">
+<h3 class="brown">Freeboard</h3>
+<table>
+
+<%
+
+
+//BoardDAO 객체생성
+BoardDAO bDAO1 = new BoardDAO();
+
+//List<BoardDTO> boardList = getBoardList(startRow, pageSize) 메서드 호출
+List<BoardDTO> boardList1 = bDAO1.getBoardList(startRow, pageSize);
+
+//날짜->String문자열 모양으로 변경
+SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy.MM.dd");
+for(int i=0; i<boardList1.size(); i++){
+	BoardDTO bDTO = boardList1.get(i);
+	%>
+	
+	<tr><td class="contxt"><a href="../board/content.jsp?num=<%=bDTO.getNum() %>"><%=bDTO.getSubject() %></a></td>
+    <td><%=dateFormat1.format(bDTO.getDate()) %></td></tr>
     
 	<%
 }

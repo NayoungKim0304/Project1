@@ -83,8 +83,17 @@ BoardDTO bDTO = bDAO.getBoard(num);
 	<td>조회수</td><td><%=bDTO.getReadcount() %></td></tr>
 <tr><td>글제목</td><td class="left"><%=bDTO.getSubject() %></td></tr>
 <tr><td>글내용</td><td class="left"><%=bDTO.getContent() %></td></tr>
-<tr><td>첨부파일</td><td class="left"><a href="../upload/<%= bDTO.getFile()%>" download><%=bDTO.getFile() %></a>
+
+<%
+
+if(bDTO.getFile() != null){
+	%>
+	<tr><td>첨부파일</td><td class="left"><a href="../upload/<%= bDTO.getFile()%>" download><%=bDTO.getFile() %></a>
 				  <img src="../upload/<%= bDTO.getFile()%>" width="100" height="100"></td></tr>
+<%
+	}
+%>
+
 </table>
 <div id="table_search">
 

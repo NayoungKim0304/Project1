@@ -54,9 +54,10 @@ BoardDTO bDTO = bDAO.getBoard(num);
 
 
 %>
-<form action="updatePro.jsp" method="post">
+<article>
+<form action="updatePro.jsp" method="post" enctype="multipart/form-data">
 <input type="hidden" name="num" value="<%=bDTO.getNum() %>">
-<table border="1">
+<table id="notice">
 <tr><td>이름</td><td><input type="text" name="name" value="<%=bDTO.getName()%>"></td></tr>
 <tr><td>비밀번호</td><td><input type="password" name="pass"></td></tr>
 <tr><td>제목</td><td><input type="text" name="subject" value="<%=bDTO.getSubject()%>"></td></tr>
@@ -72,7 +73,7 @@ BoardDTO bDTO = bDAO.getBoard(num);
 
 
 </form>
-
+</article>
 <jsp:include page="../include/bottom.jsp"></jsp:include>
 </body>
 </html>
