@@ -66,16 +66,17 @@ public class MemberDAO {
 			con=getConnection();
 			
 			// sql 구문
-			String sql="insert into member(id,pass,name,date,email,address,phone,mobile) values(?,?,?,?,?,?,?,?)";
+			String sql="insert into member(id,pass,name,date,email,zipno,address,phone,mobile) values(?,?,?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, mDTO.getId());
 			pstmt.setString(2, mDTO.getPass());
 			pstmt.setString(3, mDTO.getName());
 			pstmt.setTimestamp(4, mDTO.getDate());
 			pstmt.setString(5, mDTO.getEmail());
-			pstmt.setString(6, mDTO.getAddress());
-			pstmt.setString(7, mDTO.getPhone());
-			pstmt.setString(8, mDTO.getMobile());
+			pstmt.setString(6, mDTO.getZipno());
+			pstmt.setString(7, mDTO.getAddress());
+			pstmt.setString(8, mDTO.getPhone());
+			pstmt.setString(9, mDTO.getMobile());
 			
 			//실행
 			pstmt.executeUpdate();
@@ -113,6 +114,7 @@ public class MemberDAO {
 				mDTO.setPass(rs.getString("pass"));
 				mDTO.setName(rs.getString("name"));
 				mDTO.setDate(rs.getTimestamp("date"));
+				mDTO.setZipno(rs.getString("zipno"));
 				mDTO.setAddress(rs.getString("address"));
 				mDTO.setEmail(rs.getString("email"));
 				mDTO.setPhone(rs.getString("phone"));
@@ -144,6 +146,7 @@ public class MemberDAO {
 				mDTO.setId(rs.getString("id"));
 				mDTO.setName(rs.getString("name"));
 				mDTO.setEmail(rs.getString("email"));
+				mDTO.setZipno(rs.getString("zipno"));
 				mDTO.setAddress(rs.getString("address"));
 				mDTO.setPhone(rs.getString("phone"));
 				mDTO.setMobile(rs.getString("mobile"));
@@ -163,14 +166,15 @@ public class MemberDAO {
 		try {
 			con=getConnection();
 			
-			String sql = "update member set name=?,email=?,address=?,phone=?,mobile=? where id=?";
+			String sql = "update member set name=?,email=?, zipno=?, address=?,phone=?,mobile=? where id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, updateDTO.getName());
 			pstmt.setString(2, updateDTO.getEmail());
-			pstmt.setString(3, updateDTO.getAddress());
-			pstmt.setString(4, updateDTO.getPhone());
-			pstmt.setString(5, updateDTO.getMobile());
-			pstmt.setString(6, updateDTO.getId());
+			pstmt.setString(3, updateDTO.getZipno());
+			pstmt.setString(4, updateDTO.getAddress());
+			pstmt.setString(5, updateDTO.getPhone());
+			pstmt.setString(6, updateDTO.getMobile());
+			pstmt.setString(7, updateDTO.getId());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {

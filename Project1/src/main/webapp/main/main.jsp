@@ -60,7 +60,7 @@ quis ante......</dd>
 </dl>
 </div>
 <div id="news_notice">
-<h3 class="brown">News &amp; Notice</h3>
+<h3 class="brown">자유게시판</h3>
 <table>
 
 <%

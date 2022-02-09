@@ -1,3 +1,4 @@
+<%@page import="board.nBoardDAO"%>
 <%@page import="board.BoardDAO"%>
 <%@page import="board.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
@@ -48,7 +49,7 @@
 //글 번호를 정수형으로 변환
 int num = Integer.parseInt(request.getParameter("num"));
 
-BoardDAO bDAO = new BoardDAO();
+nBoardDAO bDAO = new nBoardDAO();
 
 BoardDTO bDTO = bDAO.getBoard(num);
 

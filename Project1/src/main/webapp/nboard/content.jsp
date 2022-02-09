@@ -1,3 +1,4 @@
+<%@page import="board.nBoardDAO"%>
 <%@page import="board.BoardDTO"%>
 <%@page import="board.BoardDAO"%>
 <%@page import="java.sql.ResultSet"%>
@@ -60,7 +61,7 @@
 int num = Integer.parseInt(request.getParameter("num"));
 
 //BoardDAO 객체 생성
-BoardDAO bDAO = new BoardDAO();
+nBoardDAO bDAO = new nBoardDAO();
 
 //조회수 1 증가 - update board set readcount = readcount+1 where num=?
 //리턴할 값 없음 updateReadcount(int num) 메서드 정의
@@ -75,7 +76,7 @@ BoardDTO bDTO = bDAO.getBoard(num);
 
 	%>
 <article>
-<h1>Freeboard Content</h1>
+<h1>News Content</h1>
 <table id="notice">
 <tr><td>글번호</td><td><%=bDTO.getNum() %></td>
 	<td>글쓴날짜</td><td><%=bDTO.getDate() %></td></tr>

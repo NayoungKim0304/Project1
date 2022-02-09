@@ -10,6 +10,7 @@ public class MemberDTO {
 	private String name;
 	private Timestamp date;
 	private String email;
+	private String zipno;
 	private String address;
 	private String phone;
 	private String mobile;
@@ -44,6 +45,12 @@ public class MemberDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getZipno() {
+		return zipno;
+	}
+	public void setZipno(String zipno) {
+		this.zipno = zipno;
 	}
 	public String getAddress() {
 		return address;

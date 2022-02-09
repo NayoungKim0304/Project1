@@ -1,3 +1,4 @@
+<%@page import="board.gBoardDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="board.BoardDTO"%>
 <%@page import="java.util.List"%>
@@ -54,7 +55,7 @@
 request.setCharacterEncoding("utf-8");
 
 //BoardDAO 객체생성
-BoardDAO bDAO = new BoardDAO();
+gBoardDAO bDAO = new gBoardDAO();
 
 // pageSize : 한 페이지에 들어갈 글 개수
 int pageSize = 10;
@@ -97,30 +98,27 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 %>
 
 <article>
-<h1>Freeboard</h1>
+<h1>Gallery</h1>
 <table id="notice">
-<tr><th class="tno">No.</th>
-    <th class="ttitle">Title</th>
-    <th class="twrite">Writer</th>
-    <th class="tdate">Date</th>
-    <th class="tread">Read</th></tr>
-<%
-for(int i=0; i<boardList.size(); i++){
-	//모든형 Object형 저장 => BoardDTO 형변환 => 다운캐스팅
-	BoardDTO bDTO = (BoardDTO)boardList.get(i);
-	%>
-	<tr><td><%=bDTO.getNum() %></td>
-		<td class="left"><a href="content.jsp?num=<%=bDTO.getNum()%>">
-			<%=bDTO.getSubject() %></a></td>
-		<td><%=bDTO.getName() %></td>
-		<td><%=dateFormat.format(bDTO.getDate()) %></td>
-		<td><%=bDTO.getReadcount() %></td></tr>
 
-	
-	<%
+    <%
 
-}
-%>
+    for(int i=0; i<boardList.size();i++){
+    	BoardDTO bDTO=(BoardDTO)boardList.get(i);
+    	%>
+<td>
+	<img src="../upload/<%=bDTO.getFile()%>" width="100" height="100" onclick="location.href='content.jsp?num=<%=bDTO.getNum()%>'"><br>
+	<%=bDTO.getSubject() %><br>
+   	<%=bDTO.getName() %>	<%=dateFormat.format(bDTO.getDate()) %><br>
+   	<%=bDTO.getReadcount() %><br></td>
+   		
+    	<%
+    	if((i+1)%5 == 0){
+    		%></tr><tr><%
+    	}
+    }
+    %>
+</tr>
 </table>
 
 <%

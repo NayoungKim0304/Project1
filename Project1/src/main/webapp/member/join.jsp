@@ -92,9 +92,9 @@ function jusoCallBack(roadFullAddr, zipNo){
 <fieldset>
 <legend>Optional</legend>
 <label>Address</label>
-<input type="text" name="address" id="zipNo" value="우편번호" readonly size=5>
-<button type="button" onclick="goPopup();">주소 검색</button><br>
-<input type="text" name="address" id="roadFullAddr" value="상세주소" readonly size=50><br>
+<input type="text" name="zipno" id="zipNo" value="우편번호" readonly size=5>
+<input type="button" onclick="goPopup();" value="주소검색" class="dup"><br>
+<input type="text" name="address" id="roadFullAddr" value="상세주소" readonly size=70><br>
 <label>Phone Number</label>
 <input type="text" name="phone"><br>
 <label>Mobile Phone Number</label>

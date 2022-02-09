@@ -1,3 +1,4 @@
+<%@page import="board.nBoardDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="board.BoardDTO"%>
 <%@page import="java.util.List"%>
@@ -54,7 +55,7 @@
 request.setCharacterEncoding("utf-8");
 
 //BoardDAO 객체생성
-BoardDAO bDAO = new BoardDAO();
+nBoardDAO bDAO = new nBoardDAO();
 
 // pageSize : 한 페이지에 들어갈 글 개수
 int pageSize = 10;
@@ -97,7 +98,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 %>
 
 <article>
-<h1>Freeboard</h1>
+<h1>News</h1>
 <table id="notice">
 <tr><th class="tno">No.</th>
     <th class="ttitle">Title</th>

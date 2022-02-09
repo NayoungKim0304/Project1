@@ -34,7 +34,7 @@ if(id==null){
 <ul>
 	<li><a href="../main/main.jsp">HOME</a></li>
 	<li><a href="../company/welcome.jsp">COMPANY</a></li>
-	<li><a href="../board/list.jsp">FreeBoard</a></li>
+	<li><a href="../board/list.jsp">Community</a></li>
 	<li><a href="#">CONTACT US</a></li>
 </ul>
 </nav>

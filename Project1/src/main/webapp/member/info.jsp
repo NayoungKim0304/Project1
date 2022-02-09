@@ -27,6 +27,7 @@ if(mDTO != null){
 		<tr><th>아이디</th><td><%=mDTO.getId() %></td></tr>
 		<tr><th>이름</th><td><%=mDTO.getName() %></td></tr>
 		<tr><th>E-mail</th><td><%=mDTO.getEmail() %></td></tr>
+		<tr><th>우편번호</th><td><%=mDTO.getZipno() %></td></tr>
 		<tr><th>주소</th><td><%=mDTO.getAddress()%></td></tr>
 		<tr><th>전화번호</th><td><%=mDTO.getPhone() %></td></tr>
 		<tr><th>휴대폰번호</th><td><%=mDTO.getMobile() %></td></tr>
