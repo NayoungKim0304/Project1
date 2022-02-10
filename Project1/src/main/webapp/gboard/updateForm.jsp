@@ -55,8 +55,7 @@ BoardDTO bDTO = bDAO.getBoard(num);
 
 
 %>
-
-<article></article>
+<article>
 <form action="updatePro.jsp" method="post" enctype="multipart/form-data">
 <input type="hidden" name="num" value="<%=bDTO.getNum() %>">
 <table id="notice">
@@ -76,7 +75,7 @@ BoardDTO bDTO = bDAO.getBoard(num);
 
 </form>
 </article>
-
+<div class="clear"></div>
 <jsp:include page="../include/bottom.jsp"></jsp:include>
 </body>
 </html>

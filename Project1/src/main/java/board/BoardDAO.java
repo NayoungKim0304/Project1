@@ -229,6 +229,7 @@ public class BoardDAO {
 					bDTO.setContent(rs.getString("content"));
 					bDTO.setReadcount(rs.getInt("readcount"));
 					bDTO.setDate(rs.getTimestamp("date"));
+					bDTO.setFile(rs.getString("file"));
 				}
 				
 			} catch (Exception e) {
@@ -246,11 +247,12 @@ public class BoardDAO {
 			try {
 				con=getConnection();
 				
-				String sql = "update board set subject=?, content=? where num=?";
+				String sql = "update board set subject=?, content=?, file=? where num=?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, updateDTO.getSubject());
 				pstmt.setString(2, updateDTO.getContent());
-				pstmt.setInt(3, updateDTO.getNum());
+				pstmt.setString(3, updateDTO.getFile());
+				pstmt.setInt(4, updateDTO.getNum());
 				
 				pstmt.executeUpdate();
 				

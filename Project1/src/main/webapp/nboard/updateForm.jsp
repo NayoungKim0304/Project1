@@ -75,6 +75,7 @@ BoardDTO bDTO = bDAO.getBoard(num);
 
 </form>
 </article>
+<div class="clear"></div>
 <jsp:include page="../include/bottom.jsp"></jsp:include>
 </body>
 </html>

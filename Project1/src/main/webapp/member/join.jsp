@@ -74,8 +74,7 @@ function jusoCallBack(roadFullAddr, zipNo){
 <fieldset>
 <legend>Basic Info</legend>
 <label>User ID</label>
-<input type="text" name="id" class="id">
-<input type="button" value="중복체크" class="dup"><br>
+<input type="text" name="id" class="id"><br>
 <label>Password</label>
 <input type="password" name="pass"><br>
 <label>Retype Password</label>
