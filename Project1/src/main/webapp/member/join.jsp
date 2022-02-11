@@ -47,6 +47,18 @@ function jusoCallBack(roadFullAddr, zipNo){
 
 }
 
+function userCheck(){
+	if(document.fr.id.value==""){
+		alert("아이디를 입력하세요");
+		document.fr.id.focus();
+		return;
+	}
+	
+	//창 열기
+	var id=document.fr.id.value;
+	window.open("userCheck.jsp?id=" + id, "", "width=400,height=300");
+	}
+
 </script>
 </head>
 <body>
@@ -70,11 +82,12 @@ function jusoCallBack(roadFullAddr, zipNo){
 <!-- 본문내용 -->
 <article>
 <h1>Join Us</h1>
-<form action="joinPro.jsp" id="join" method="post">
+<form action="joinPro.jsp" id="join" method="post" name="fr">
 <fieldset>
 <legend>Basic Info</legend>
 <label>User ID</label>
-<input type="text" name="id" class="id"><br>
+<input type="text" name="id" class="id">
+<input type="button" value="아이디중복체크" class="dup" onclick="userCheck()"><br>
 <label>Password</label>
 <input type="password" name="pass"><br>
 <label>Retype Password</label>
