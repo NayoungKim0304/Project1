@@ -33,18 +33,14 @@
 
 <!-- 본문 들어가는 곳 -->
 <!-- 서브페이지 메인이미지 -->
-<div id="sub_img"></div>
+
 <!-- 서브페이지 메인이미지 -->
 <!-- 왼쪽메뉴 -->
-<nav id="sub_menu">
-<ul>
-<li><a href="#">Welcome</a></li>
-</ul>
-</nav>
+
 <!-- 왼쪽메뉴 -->
 <!-- 내용 -->
 <article>
-<h1>Welcome</h1>
+
 
 <p>
 <br>

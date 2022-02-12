@@ -34,7 +34,10 @@
 
 <!-- 본문들어가는 곳 -->
 <!-- 메인이미지 -->
-<div id="sub_img_center"></div>
+
+<div id="sub_img_center">
+</div>
+<div class="clear"></div>
 <!-- 메인이미지 -->
 
 <!-- 왼쪽메뉴 -->
